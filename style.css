@@ -37,23 +37,24 @@ canvas#gameCanvas {
 #hud {
     position: absolute;
     top: 14px;
-    left: 18px;
-    right: 18px;
+    left: 16px;
+    right: 16px;
     display: flex;
     justify-content: space-between;
+    gap: 8px;
     z-index: 5;
     pointer-events: none;
 }
 
 .hud-pill {
-    background: rgba(20, 25, 45, 0.75);
+    background: rgba(20, 25, 45, 0.78);
     backdrop-filter: blur(6px);
-    padding: 7px 16px;
+    padding: 6px 13px;
     border-radius: 50px;
     border: 2px solid rgba(255, 255, 255, 0.18);
     font-weight: 800;
-    font-size: 15px;
-    letter-spacing: 0.5px;
+    font-size: 14px;
+    letter-spacing: 0.4px;
     box-shadow: 0 4px 10px rgba(0,0,0,0.3);
 }
 
