@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wild Jumpers - Animal Platformer</title>
+    <script>
+        // CAMBIA QUESTA STRINGA AD OGNI AGGIORNAMENTO SU GITHUB PER EVITARE LA CACHE
+        const GAME_VERSION = "v1.1";
+
+        const styleLink = document.createElement("link");
+        styleLink.rel = "stylesheet";
+        styleLink.href = `style.css?v=${encodeURIComponent(GAME_VERSION)}`;
+        document.head.appendChild(styleLink);
+    </script>
+</head>
+<body>
+    <div id="game-container">
+        <!-- HUD in alto -->
+        <div id="hud" class="hidden">
+            <div class="hud-pill">🐾 <span id="hud-char">-</span></div>
+            <div class="hud-pill">🗺️ <span id="hud-level">1-1</span></div>
+            <div class="hud-pill">🪙 <span id="hud-coins">0</span></div>
+            <div class="hud-pill">❤️ <span id="hud-lives">3</span></div>
+            <div class="hud-pill">⭐ <span id="hud-score">0</span></div>
+        </div>
+
+        <!-- Menu Principale e Selezione Personaggio -->
+        <div id="menu-screen" class="overlay">
+            <h1>WILD JUMPERS</h1>
+            <p class="subtitle">Clicca su un animale per vederlo ballare e sceglierlo!</p>
+            
+            <div class="char-grid">
+                <div class="char-card selected" data-char="fox">
+                    <canvas class="char-preview-canvas" width="90" height="90" data-char="fox"></canvas>
+                    <h3>VOLPE (Bilanciata)</h3>
+                    <div class="stat-bars">
+                        <span>Velocità: ★★★☆☆</span>
+                        <span>Salto: ★★★☆☆</span>
+                    </div>
+                </div>
+                <div class="char-card" data-char="rabbit">
+                    <canvas class="char-preview-canvas" width="90" height="90" data-char="rabbit"></canvas>
+                    <h3>CONIGLIO (Doppio Salto)</h3>
+                    <div class="stat-bars">
+                        <span>Velocità: ★★★☆☆</span>
+                        <span>Salto: ★★★★★</span>
+                    </div>
+                </div>
+                <div class="char-card" data-char="cheetah">
+                    <canvas class="char-preview-canvas" width="90" height="90" data-char="cheetah"></canvas>
+                    <h3>GHEPARDO (Velocista)</h3>
+                    <div class="stat-bars">
+                        <span>Velocità: ★★★★★</span>
+                        <span>Salto: ★★☆☆☆</span>
+                    </div>
+                </div>
+                <div class="char-card" data-char="bear">
+                    <canvas class="char-preview-canvas" width="90" height="90" data-char="bear"></canvas>
+                    <h3>ORSO (Forza Bruta)</h3>
+                    <div class="stat-bars">
+                        <span>Velocità: ★★☆☆☆</span>
+                        <span>Salto: ★★★★☆</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="world-select">
+                <label for="level-select">Scegli Mondo:</label>
+                <select id="level-select"></select>
+            </div>
+
+            <button id="start-btn">INIZIA AVVENTURA</button>
+            <p class="controls-hint"><b>A / D</b> o <b>Frecce</b>: Muovi • <b>SPAZIO / W / SU</b>: Salta • <b>R</b>: Riavvia livello</p>
+            <div id="version-badge" class="version-tag"></div>
+        </div>
+
+        <!-- Schermata Game Over / Vittoria -->
+        <div id="end-screen" class="overlay hidden">
+            <h1 id="end-title">GAME OVER</h1>
+            <p id="end-stats">Punteggio finale: 0</p>
+            <button id="restart-btn">TORNA AL MENU</button>
+        </div>
+
+        <canvas id="gameCanvas" width="960" height="540"></canvas>
+    </div>
+
+    <script>
+        const gameScript = document.createElement("script");
+        gameScript.src = `game.js?v=${encodeURIComponent(GAME_VERSION)}`;
+        document.body.appendChild(gameScript);
+    </script>
+</body>
+</html>
